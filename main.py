@@ -1,52 +1,39 @@
 from useful import Auxiliar
-finalState = list(range (9))
-#finalState[0] = 2
-#finalState[1] = 4
-#finalState[2] = 3
-#finalState[3] = 1
-#finalState[4] = 0
-#finalState[5] = 6
-#finalState[6] = 7
-#finalState[7] = 5
-#finalState[8] = 8
+stateB = list(range (9))
+stateB[0] = 1
+stateB[1] = 2
+stateB[2] = 3
+stateB[3] = 4
+stateB[4] = 5
+stateB[5] = 6
+stateB[6] = 7
+stateB[7] = 8
+stateB[8] = 0
 
-#finalState[0] = 1
-#finalState[1] = 2
-#finalState[2] = 3
-#finalState[3] = 4
-#finalState[4] = 5
-#finalState[5] = 6
-#finalState[6] = 7
-#finalState[7] = 8
-#finalState[8] = 0
-
-initialState = list(range(9))
-initialState[0] = 0
-initialState[1] = 1
-initialState[2] = 4
-initialState[3] = 2
-initialState[4] = 5
-initialState[5] = 3
-initialState[6] = 8
-initialState[7] = 7
-initialState[8] = 6
-
-#initialState[0] = 8
-#initialState[1] = 7
-#initialState[2] = 6
-#initialState[3] = 5
-#initialState[4] = 4
-#initialState[5] = 3
-#initialState[6] = 2
-#initialState[7] = 1
-#initialState[8] = 0
-
+stateA = list(range(9))
+stateA[0] = 2
+stateA[1] = 4
+stateA[2] = 3
+stateA[3] = 1
+stateA[4] = 0
+stateA[5] = 6
+stateA[6] = 7
+stateA[7] = 5
+stateA[8] = 8
 
 Aux = Auxiliar()
+#print "INITIAL STATE:"
+#initialState = Aux.createState()
+#print ""
+#print "FINAL STATE:"
+#finalState = Aux.createState()
 
-Aux.verifReachable(initialState, finalState)
-#teste = []
-#teste = Aux.createState()
-initialState = Aux.createState()
-Aux.verifReachable(initialState, finalState)
-print initialState
+#print "INITIAL STATE:"
+#print initialState
+#print "FINAL STATE:"
+#print finalState
+
+#Aux.verifReachable(initialState, finalState)
+
+Aux.verifReachable(stateA, stateB)
+Aux.newStates(stateA)

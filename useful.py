@@ -3,15 +3,17 @@ class Auxiliar():
 		state = []
 		for x in xrange(0, 9):
 			inp = raw_input("Informe o " + str(x+1) +"o valor para o estado: ")
-			state.append(inp)
+			state.append(int(inp))
 
 		return state
 		
 	def verifReachable(self, initial, final):
 		inv = 0
+		
 		for posInit in xrange(0, 9): #vetor inicial
 			
 			if (initial[posInit] != 0):
+				
 				posFinal = final.index(initial[posInit])
 				aux=[] #cria uma lista com todos os elementos que podem ocorrer antes do atual
 				for x in xrange(0, posFinal):
@@ -29,3 +31,13 @@ class Auxiliar():
 			return True
 		else:
 			return False
+
+	def newStates(self, state):
+		posZero = state.index(0)
+		print posZero
+		if (posZero == 0):
+			
+	def andarPraCima(self, state):
+	def andarPraBaixo(self, state):
+	def andarPraDireita(self, state):
+	def andarPraEsquerda(self, state):
