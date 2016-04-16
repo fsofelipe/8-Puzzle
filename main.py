@@ -1,27 +1,10 @@
 from useful import Auxiliar
+from tree import Node
+stateB = [1, 2, 3, 4, 5, 6, 7, 8, 0]
 
-stateB = list(range (9))
-stateB[0] = 1
-stateB[1] = 2
-stateB[2] = 3
-stateB[3] = 4
-stateB[4] = 5
-stateB[5] = 6
-stateB[6] = 7
-stateB[7] = 8
-stateB[8] = 0
+stateA = [2, 4, 3, 1, 0, 6, 7, 5, 8]
 
-stateA = list(range(9))
-stateA[0] = 2
-stateA[1] = 4
-stateA[2] = 3
-stateA[3] = 1
-stateA[4] = 0
-stateA[5] = 6
-stateA[6] = 7
-stateA[7] = 5
-stateA[8] = 8
-
+stateC = [8, 7, 6, 5, 4, 3, 2, 1, 0]
 Aux = Auxiliar()
 #print "INITIAL STATE:"
 #initialState = Aux.createState()
@@ -35,6 +18,17 @@ Aux = Auxiliar()
 #print finalState
 
 #Aux.verifReachable(initialState, finalState)
+#Aux.verifReachable(stateA, stateB)
+#Aux.newStates(stateA)
 
-Aux.verifReachable(stateA, stateB)
-Aux.newStates(stateA)
+arvore = Node(stateA)
+arv = Node(stateB)
+arv2 = Node(stateC)
+
+arvore.addChild(arv)
+arvore.addChild(arv2)
+#print arvore.state
+#print arvore.children[1].state
+
+Aux.newStates(stateB)
+

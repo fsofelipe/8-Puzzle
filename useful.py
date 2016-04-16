@@ -1,5 +1,3 @@
-# coding=UTF-8
-
 class Auxiliar():
 	def createState(self):
 		state = []
@@ -32,38 +30,41 @@ class Auxiliar():
 		else:
 			return False
 
+
+
 	def newStates(self, state):
 		posZero = state.index(0)
-		print posZero
+		
+		children = state
+		retorno = []
+		
 		if posZero in [0,1,2,3,4,5]:	#Movimento para Baixo
-			moveDown(self, state, i)
+			aux = children[posZero]
+			children[posZero] = children[posZero+3]
+			children[posZero+3] = aux
+			print children
+			retorno.append(children)
+		children = state
 		if posZero in [3,4,5,6,7,8]:	#Movimento para Cima
-			moveUp(self, state, i)
+			aux = children[posZero]
+			children[posZero] = children[posZero-3]
+			children[posZero-3] = aux
+			print children
+			retorno.append(children)
+		children = state	
 		if posZero in [0,1,3,4,6,7]:	#Movimento para Direita
-			moveRight(self, state, i)
+			aux = children[posZero]
+			children[posZero] = children[posZero+1]
+			children[posZero+1] = aux
+			print children
+			retorno.append(children)
+		children = state	
 		if posZero in [1,2,4,5,7,8]:	#Movimento para Esquerda
-			moveLeft(self, state, i)
+			aux = children[posZero]
+			children[posZero] = children[posZero-1]
+			children[posZero-1] = aux
+			print children
+			retorno.append(children)
 
-			
-	
-
-	def moveUp(self, state, pos):
-		vect = state
-		vect[pos], vect[pos-3] = vect[pos-3], vect[pos]
-		return vect
-
-	def moveDown(self, state, pos):
-		vect = state
-		vect[pos], vect[pos+3] = vect[pos+3], vect[pos]
-		return vect
-
-	def moveRight(self, state, pos):
-		vect = state
-		vect[pos], vect[pos+1] = vect[pos+1], vect[pos]
-		return vect
-
-	def moveLeft(self, state, pos):
-		vect = state
-		vect[pos], vect[pos-1] = vect[pos+1], vect[pos]
-		return vect
-
+		print "\n\n"
+		print retorno
