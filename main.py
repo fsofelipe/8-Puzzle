@@ -1,4 +1,5 @@
 from useful import Auxiliar
+
 stateB = list(range (9))
 stateB[0] = 1
 stateB[1] = 2

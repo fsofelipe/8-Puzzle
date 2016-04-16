@@ -1,10 +1,10 @@
+# coding=UTF-8
+
 class Auxiliar():
 	def createState(self):
 		state = []
 		for x in xrange(0, 9):
-			inp = raw_input("Informe o " + str(x+1) +"o valor para o estado: ")
-			state.append(int(inp))
-
+			state.append = input("Informe o " + str(x+1) +"o valor para o estado: ")
 		return state
 		
 	def verifReachable(self, initial, final):
@@ -35,9 +35,35 @@ class Auxiliar():
 	def newStates(self, state):
 		posZero = state.index(0)
 		print posZero
-		if (posZero == 0):
+		if posZero in [0,1,2,3,4,5]:	#Movimento para Baixo
+			moveDown(self, state, i)
+		if posZero in [3,4,5,6,7,8]:	#Movimento para Cima
+			moveUp(self, state, i)
+		if posZero in [0,1,3,4,6,7]:	#Movimento para Direita
+			moveRight(self, state, i)
+		if posZero in [1,2,4,5,7,8]:	#Movimento para Esquerda
+			moveLeft(self, state, i)
+
 			
-	def andarPraCima(self, state):
-	def andarPraBaixo(self, state):
-	def andarPraDireita(self, state):
-	def andarPraEsquerda(self, state):
+	
+
+	def moveUp(self, state, pos):
+		vect = state
+		vect[pos], vect[pos-3] = vect[pos-3], vect[pos]
+		return vect
+
+	def moveDown(self, state, pos):
+		vect = state
+		vect[pos], vect[pos+3] = vect[pos+3], vect[pos]
+		return vect
+
+	def moveRight(self, state, pos):
+		vect = state
+		vect[pos], vect[pos+1] = vect[pos+1], vect[pos]
+		return vect
+
+	def moveLeft(self, state, pos):
+		vect = state
+		vect[pos], vect[pos-1] = vect[pos+1], vect[pos]
+		return vect
+
