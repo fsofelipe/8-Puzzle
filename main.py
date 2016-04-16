@@ -30,5 +30,5 @@ arvore.addChild(arv2)
 #print arvore.state
 #print arvore.children[1].state
 
-Aux.newStates(stateB)
+Aux.newStates(stateA)
 
