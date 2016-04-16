@@ -3,6 +3,7 @@ class Node(object):
 		self.state = state
 		self.children = []
 	
+	
 	def addChild(self, node):
 		self.children.append(node) 
 		
