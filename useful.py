@@ -32,25 +32,8 @@ class Auxiliar():
 
 
 
-	def newStates(self, state):
-		posZero = state.index(0)
-		children = state[:]
-		retorno = []
-		if posZero in [0,1,2,3,4,5]:	#Movimento para Baixo
-			children[posZero], children[posZero+3] = children[posZero+3], children[posZero]
-			retorno.append(children)
-		children = state[:]	
-		if posZero in [3,4,5,6,7,8]:	#Movimento para Cima
-			children[posZero], children[posZero-3] = children[posZero-3], children[posZero]
-			retorno.append(children)
-		children = state[:]
-		if posZero in [0,1,3,4,6,7]:	#Movimento para Direita
-			children[posZero], children[posZero+1] = children[posZero+1], children[posZero]
-			retorno.append(children)
-		children = state[:]	
-		if posZero in [1,2,4,5,7,8]:	#Movimento para Esquerda
-			children[posZero], children[posZero-1] = children[posZero-1], children[posZero]
-			retorno.append(children)
-		children = state[:]
-		print "\n\n"
-		print retorno
+	
+		
+		
+		
+	
