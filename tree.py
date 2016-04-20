@@ -17,7 +17,7 @@ class Node(object):
 		
 	def newStates(self, final):
 		print self.state
-		if (self.height == 30): 
+		if (self.height == 4): 
 			print "max height"
 			return False
 		if (self.state == final): 
@@ -25,6 +25,7 @@ class Node(object):
 			return True
 		posZero = self.state.index(0)
 		retorno = self.state[:]
+		
 		if posZero in [0,1,2,3,4,5]:	#Movimento para Baixo
 			retorno[posZero], retorno[posZero+3] = retorno[posZero+3], retorno[posZero]
 			if(self.checkLoop(retorno) == True): 
@@ -32,9 +33,11 @@ class Node(object):
 				return False
 			self.addChild(Node(retorno))
 			num = len(self.children)
-			if(self.children[num-1].newStates(final)==True):
-				return True
+			for i in range(0, num-1):
+				if(self.children[i].newStates(final)==True):
+					return True
 		retorno = self.state[:]
+		
 		if posZero in [3,4,5,6,7,8]:	#Movimento para Cima
 			retorno[posZero], retorno[posZero-3] = retorno[posZero-3], retorno[posZero]
 			if(self.checkLoop(retorno) == True): 
@@ -42,9 +45,11 @@ class Node(object):
 				return False
 			self.addChild(Node(retorno))
 			num = len(self.children)
-			if(self.children[num-1].newStates(final)==True):
-				return True
+			for i in range(0, num-1):
+				if(self.children[i].newStates(final)==True):
+					return True
 		retorno = self.state[:]
+		
 		if posZero in [0,1,3,4,6,7]:	#Movimento para Direita
 			retorno[posZero], retorno[posZero+1] = retorno[posZero+1], retorno[posZero]
 			if(self.checkLoop(retorno) == True): 
@@ -52,9 +57,11 @@ class Node(object):
 				return False
 			self.addChild(Node(retorno))
 			num = len(self.children)
-			if(self.children[num-1].newStates(final)==True):
-				return True
+			for i in range(0, num-1):
+				if(self.children[i].newStates(final)==True):
+					return True
 		retorno = self.state[:]
+		
 		if posZero in [1,2,4,5,7,8]:	#Movimento para Esquerda
 			retorno[posZero], retorno[posZero-1] = retorno[posZero-1], retorno[posZero]
 			if(self.checkLoop(retorno) == True): 
@@ -62,8 +69,9 @@ class Node(object):
 				return False
 			self.addChild(Node(retorno))
 			num = len(self.children)
-			if(self.children[num-1].newStates(final)==True):
-				return True
+			for i in range(0, num-1):
+				if(self.children[i].newStates(final)==True):
+					return True
 		retorno = self.state[:]	
 		
 

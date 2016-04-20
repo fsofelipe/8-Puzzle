@@ -1,9 +1,9 @@
 from useful import Auxiliar
 from tree import Node
 
-init = [1, 2, 3, 4, 0, 6, 7, 8, 5]
+init = [1, 2, 3, 4, 0, 6, 7, 5, 8]
 
-final = [1, 2, 3, 4, 8, 0, 7, 5, 6]
+final = [1, 2, 3, 4, 5, 6, 7, 8, 0]
 
 
 tree = Node(init)
