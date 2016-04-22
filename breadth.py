@@ -18,7 +18,7 @@ class Largura(object):
 
 		self.children.append(node)	
 		
-	def alg (self, final):
+	def algorithm(self, final):
 		#Objeto Auxiliar
 		aux = Auxiliar()
 
@@ -50,11 +50,8 @@ class Largura(object):
 		sai = False
 		while (len(irmaos) != 0 and sai == False):
 			for current in irmaos:
-				##print
-				##print "current.state:"
-				##print current.state
+				
 				if (current.state == final):
-					print "achei"
 					sai = True
 					break
 				#Gera novos estados
@@ -78,9 +75,6 @@ class Largura(object):
 						
 						proximos.append(current.children[filho])
 
-				##print "quantidade de filhos"
-				##print len(current.children)
-
 				irmaos.remove(current)
 			
 			irmaos = proximos
@@ -89,23 +83,25 @@ class Largura(object):
 
 		return current
 
-	def printParent(self, node):
+	def getPrint(self, node):
 		path = []
-		while (node.parent != None):
+		while(node.parent != None):
 			path.append(node.state)
 			node = node.parent
 		path.append(node.state)
+
 		path.reverse()
+
 		for i in path:
 			print i
 
-	def getPath(self, node):
+	def getList(self, node):
 		path = []
-		while (node.parent != None):
-			path.append(node)
+		while(node.parent != None):
+			path.append(node.state)
 			node = node.parent
-		path.append(node)
+		path.append(node.state)
+
 		path.reverse()
-		for i in path:
-			print i.state
+
 		return path

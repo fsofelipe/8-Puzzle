@@ -1,4 +1,4 @@
-class Auxiliar():
+class Auxiliar(object):
 	def createState(self):
 		state = []
 		for x in xrange(0, 9):
@@ -55,7 +55,9 @@ class Auxiliar():
 			estado = state[:]
 
 		return retorno
+
 	
+		
 		
 		
 	

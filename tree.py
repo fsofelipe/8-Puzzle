@@ -16,8 +16,8 @@ class Node(object):
 		self.children.append(node)	
 		
 	def newStates(self, final):
-		print self.state
-		if (self.height == 4): 
+		#print self.state
+		if (self.height == 15): 
 			print "max height"
 			return False
 		if (self.state == final): 
@@ -29,7 +29,7 @@ class Node(object):
 		if posZero in [0,1,2,3,4,5]:	#Movimento para Baixo
 			retorno[posZero], retorno[posZero+3] = retorno[posZero+3], retorno[posZero]
 			if(self.checkLoop(retorno) == True): 
-				print "LOOP DOWN!"
+				#print "LOOP DOWN!"
 				return False
 			self.addChild(Node(retorno))
 			num = len(self.children)
@@ -41,7 +41,7 @@ class Node(object):
 		if posZero in [3,4,5,6,7,8]:	#Movimento para Cima
 			retorno[posZero], retorno[posZero-3] = retorno[posZero-3], retorno[posZero]
 			if(self.checkLoop(retorno) == True): 
-				print "LOOP UP!"
+				#print "LOOP UP!"
 				return False
 			self.addChild(Node(retorno))
 			num = len(self.children)
@@ -53,7 +53,7 @@ class Node(object):
 		if posZero in [0,1,3,4,6,7]:	#Movimento para Direita
 			retorno[posZero], retorno[posZero+1] = retorno[posZero+1], retorno[posZero]
 			if(self.checkLoop(retorno) == True): 
-				print "LOOP RIGHT!"
+				#print "LOOP RIGHT!"
 				return False
 			self.addChild(Node(retorno))
 			num = len(self.children)
@@ -65,7 +65,7 @@ class Node(object):
 		if posZero in [1,2,4,5,7,8]:	#Movimento para Esquerda
 			retorno[posZero], retorno[posZero-1] = retorno[posZero-1], retorno[posZero]
 			if(self.checkLoop(retorno) == True): 
-				print "LOOP LEFT!"
+				#print "LOOP LEFT!"
 				return False
 			self.addChild(Node(retorno))
 			num = len(self.children)
