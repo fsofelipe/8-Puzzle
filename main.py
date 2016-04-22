@@ -14,7 +14,7 @@ if (aux.verifReachable(init, final)):
 
 	teste = Largura(init)
 
-	teste.alg(final)
+	teste.printParent(teste.alg(final))
 
 
 else:

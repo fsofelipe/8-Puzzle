@@ -23,14 +23,14 @@ class Largura(object):
 		aux = Auxiliar()
 
 		#Listas
-		nodeList = []
 		visited = []
-
+		irmaos = []
+		proximos = []
 
 		#raiz da arvore
 		raiz = Largura(self.state)
 		raiz.setNode(None, 0, [])
-		nodeList.append(raiz.state)
+
 		auxList = aux.newStates(raiz.state)
 
 		visited.append(raiz.state)
@@ -44,38 +44,57 @@ class Largura(object):
 			if (check == -1):
 				#proximos nodos
 				raiz.addChild(item)
-				nodeList.append(item)
-		
 
-		current = raiz.children[0]
+		irmaos = raiz.children
 
-		print raiz.state		
-
-		while (len(nodeList) > 0):
-			print current.state
+		sai = False
+		while (len(irmaos) != 0 and sai == False):
+			for current in irmaos:
+				##print
+				##print "current.state:"
+				##print current.state
+				if (current.state == final):
+					print "achei"
+					sai = True
+					break
+				#Gera novos estados
+				auxList = aux.newStates(current.state)
 			
-			visited.append(current.state)
+				for item in auxList:
+					try: 
+						check = visited.index(item)
+					except:
+						check = -1
+				
+					if (check == -1): 
+						#proximos nodos
+						current.addChild(item)
+						visited.append(item)
 
-			if (current.state == final):
-				break
+						if (len(current.children) > 0):
+							filho = len(current.children) - 1
+						else:
+						 	filho = 0
+						
+						proximos.append(current.children[filho])
 
-			auxList = aux.newStates(current.state)
-			#Cria novos estados para este nodo e adiciona para lista dos proximos nodos
-			for item in auxList:
-				try:
-					check = visited.index(item)
-				except:
-					check = -1
+				##print "quantidade de filhos"
+				##print len(current.children)
 
-				if (check == -1):
-					#proximos nodos
-					current.addChild(item)
-					nodeList.append(item)
-			print nodeList[0]
-			del nodeList[0]
+				irmaos.remove(current)
+			
+			irmaos = proximos
 
-			if (len(nodeList) > 0):
-				pai = current.parent
-				for i in xrange (0, len(pai.children)):
-					if (pai.children[i] == nodeList[0]):
-						current = parent.children[i]
+			#print current.state
+
+		return current
+
+	def printParent(self, node):
+		path = []
+		while (node.parent != None):
+			path.append(node.state)
+			node = node.parent
+		path.append(node.state)
+		path.reverse()
+		for i in path:
+			print i
