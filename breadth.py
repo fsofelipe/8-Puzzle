@@ -98,3 +98,14 @@ class Largura(object):
 		path.reverse()
 		for i in path:
 			print i
+
+	def getPath(self, node):
+		path = []
+		while (node.parent != None):
+			path.append(node)
+			node = node.parent
+		path.append(node)
+		path.reverse()
+		for i in path:
+			print i.state
+		return path
