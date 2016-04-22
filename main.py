@@ -1,39 +1,21 @@
 from useful import Auxiliar
 from tree import Node
-
-init = [1, 2, 3, 4, 0, 6, 7, 5, 8]
-
+from breadth import Largura
 final = [1, 2, 3, 4, 5, 6, 7, 8, 0]
 
+init = [2, 4, 3, 1, 0, 6, 7, 5, 8]
 
-tree = Node(init)
-tree.newStates(final)
+t = [2, 0, 3, 1 , 4, 6, 7, 5, 8]
 
-#print "INITIAL STATE:"
-#initialState = Aux.createState()
-#print ""
-#print "FINAL STATE:"
-#finalState = Aux.createState()
+aux = Auxiliar()
 
-#print "INITIAL STATE:"
-#print initialState
-#print "FINAL STATE:"
-#print finalState
+if (aux.verifReachable(init, final)):
+	print "reachable"
 
-#Aux.verifReachable(initialState, finalState)
-#Aux.verifReachable(stateA, stateB)
-#Aux.newStates(stateA)
+	teste = Largura(init)
 
-#arvore = Node(stateD)
-#arv = Node(stateB)
-#arv2 = Node(stateC)
-#arv3 = Node(stateA)
+	teste.alg(final)
 
-#arvore.addChild(arv)
-#arv.addChild(arv3)
-#arv3.addChild(arvore)
-#print arvore.state
-#print arvore.children[1].state
 
-#Aux.newStates(stateA)
-
+else:
+	print "not reachable"	
