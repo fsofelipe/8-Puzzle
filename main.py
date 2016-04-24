@@ -9,7 +9,7 @@ aux = Auxiliar()
 if (aux.verifReachable(init, final)):
 	print "reachable"
 	ex = Execution(init, final)
-	ex.breadthSearchPrint()
+	ex.breadthSearchPrintProf()
 
 else:
 	print "not reachable"	
