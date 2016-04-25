@@ -13,10 +13,10 @@ class Execution(object):
 		lag = Largura(self.initial)
 		return lag.getPrint(lag.algorithm(self.final))
 
-	def breadthSearchPrintProf(self, maxheight):
+	def deeperSearchPrint(self, maxheight):
 		prof = Profundidade(self.initial)
 		return prof.getPrint(prof.algorithm(self.final, maxheight))
 
-	def breadthSearchListProf(self, maxheight):
+	def deeperSearchListProf(self, maxheight):
 		prof = Profundidade(self.initial)
 		return prof.getList(prof.algorithm(self.final, maxheight))

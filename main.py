@@ -13,7 +13,7 @@ if (aux.verifReachable(init, final)):
 	print "Widht Search"
 	ex.breadthSearchPrint()
 	print "Deep Search"
-	ex.breadthSearchPrintProf(15)
+	ex.deeperSearchPrint(15)
 
 else:
 	print "not reachable"	
