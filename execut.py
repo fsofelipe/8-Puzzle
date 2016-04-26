@@ -17,6 +17,6 @@ class Execution(object):
 		prof = Profundidade(self.initial)
 		return prof.getPrint(prof.algorithm(self.final, maxheight))
 
-	def deeperSearchListProf(self, maxheight):
+	def deeperSearchList(self, maxheight):
 		prof = Profundidade(self.initial)
 		return prof.getList(prof.algorithm(self.final, maxheight))

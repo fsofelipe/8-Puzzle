@@ -28,8 +28,17 @@ def makeStage(stage):	#Cria listas de ints com as entradas
 		newStage.append(int(stage[i]))
 	return newStage
 
-def outputMoves():
-	output.insert(END, "teste")
+def outputMoves(outputList):	#Printa os elementos da lista 3 a 3 e quebra 1 linha
+	output.insert(END, "Numero de passos: " + str(len(outputList)-1))
+	output.insert(END,"\n\n")
+	for i in outputList:
+		for j in range(0,9,3):
+			show = str(i[j]) + " " + str(i[j+1]) + " " + str(i[j+2])
+			output.insert(END, show)
+			output.insert(END,"\n")
+
+		output.insert(END,"\n")
+
 
 def runSearch(): 		#executa tudo
 	erro = checkStages()
@@ -37,20 +46,34 @@ def runSearch(): 		#executa tudo
 		inicial = makeStage(inicialEntry.get())
 		final = makeStage(finalEntry.get())
 		aux = Auxiliar()
-		
-		if (aux.verifReachable(inicial, final)):
-			print "reachable"
-			ex = Execution(inicial, final)
+		output.delete(1.0, END)
 
+		if (aux.verifReachable(inicial, final)):
+
+			output.insert(END,"Reachable\n")
+
+			ex = Execution(inicial, final)
+			outputList = []
 			if(int(v.get() == 1)):
-				ex.deeperSearchPrint(15)
-				outputMoves()
+				if (alturaEntry.get() != ""):
+					altura = int(alturaEntry.get())
+					outputList = ex.deeperSearchList(altura)
+					
+					outputMoves(outputList)
+
+				else:
+
+					output.insert(END,"Altura invalida!\n")
+
+					alturaEntry.delete(0)
 			else:
-				ex.breadthSearchPrint()
-				outputMoves()
+				alturaEntry.delete(0, END)
+				outputList = ex.breadthSearchList()
+				outputMoves(outputList)
 		else:
-				print "not reachable"
-		
+
+				output.insert(END,"NOT Reachable\n")
+
 
 ##############################################################
 
@@ -66,12 +89,16 @@ root.title("Trabalho de FIA")
 ################ ENTRADAS ###########################
 labelInicial = Label(root, text="Estagio Inicial ")
 labelFinal = Label(root, text="Estagio Final ")
+labelAltura = Label(root, text="Altura Maxima ")
 inicialEntry = Entry(root)
 finalEntry = Entry(root)
+alturaEntry = Entry(root)
 labelInicial.grid(row=0, column=0, pady=5)
 inicialEntry.grid(row=0, column=1, pady=5, padx=7)
 labelFinal.grid(row=1, column=0, pady=5)
 finalEntry.grid(row=1, column=1, pady=5, padx=7)
+labelAltura.grid(row=3, column=0, pady=5)
+alturaEntry.grid(row=3, column=1, pady=5, padx=7)
 
 ################ ALGORITMO ##########################
 v = IntVar()
@@ -81,15 +108,15 @@ Radiobutton(root, text="Busca em Largura", variable=v, value=2).grid(row=2, colu
 
 ############ RODA O PROGRAMA ########################
 buttonSearch = Button(root, text="Buscar", command=runSearch)
-buttonSearch.grid(row=3, column=0, pady=5)
+buttonSearch.grid(row=4, column=0, pady=5)
 
 ############ LIMPA ENTRADAS ######################
 buttonClear = Button(root, text="Limpar", command=clear)
-buttonClear.grid(row=3, column=1, pady=5)
+buttonClear.grid(row=4, column=1, pady=5)
 
 ############# EXIBE SAIDA ##########################
-output = Text(root, width=33, height=8)
-output.grid(row=4, column=0, columnspan=2, pady=10)
+output = Text(root, width=22, height=8)
+output.grid(row=5, column=0, columnspan=2, pady=10)
 
 ####################################################
 
