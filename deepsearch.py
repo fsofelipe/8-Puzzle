@@ -20,11 +20,11 @@ class Profundidade(object):
 
 		self.children.append(node)	
 		
-	def algorithm(self, final):
+	def algorithm(self, final, maxheight):
 		aux = Auxiliar()
 		if(self.state == final):
 			return self
-		elif(self.height > 20):
+		elif(self.height > maxheight):
 			return False
 		elif(self.checkLoop() == True):
 			return False
@@ -33,9 +33,11 @@ class Profundidade(object):
 			for filho in filhos:
 				self.addChild(filho)
 			for x in self.children:
-				state = x.algorithm(final)
+				state = x.algorithm(final, maxheight)
 				if(state != False):
 					return state
+		if(self.height == 0):
+			print "try higher maxheight"
 		return False
 
 	def getPrint(self, node):
