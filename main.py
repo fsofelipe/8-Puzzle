@@ -4,19 +4,6 @@ from execut import Execution
 from useful import Auxiliar
 
 
-<<<<<<< HEAD
-=======
-t = [2, 0, 3, 1 , 4, 6, 7, 5, 8]
-aux = Auxiliar()
-if (aux.verifReachable(init, final)):
-	print "reachable"
-	ex = Execution(init, final)
-	print " "
-	print "Widht Search"
-	ex.breadthSearchPrint()
-	print "Deep Search"
-	ex.deeperSearchPrint(15)
->>>>>>> d4e0402ed171b738fb1560793fe7561255c568a0
 
 ############### METODOS PARA INTERFACE #######################
 
