@@ -39,6 +39,21 @@ def outputMoves(outputList):	#Printa os elementos da lista 3 a 3 e quebra 1 linh
 
 		output.insert(END,"\n")
 
+def checkHeight():              #valida a altura
+        if (heightEntry.get() == ""):
+                h = 25
+                output.insert(END, "Altura padrao: 25\n")
+        else:
+                h = int(heightEntry.get())
+                if h >= 60:
+                        h = 60
+                        output.insert(END, "Altura muito grande, vamos deixar em 60\n")
+                elif h <= 0:
+                        h = 25
+                        output.insert(END, "Altura negativa? kkkk, vamos deixar em 25\n")
+        return h
+        
+
 
 def runSearch(): 		#executa tudo
 	erro = checkStages()
@@ -50,29 +65,22 @@ def runSearch(): 		#executa tudo
 
 		if (aux.verifReachable(inicial, final)):
 
-			output.insert(END,"Reachable\n")
+			output.insert(END,"Estado Alcancavel\n")
 
 			ex = Execution(inicial, final)
 			outputList = []
 			if(int(v.get() == 1)):
-				if (alturaEntry.get() != ""):
-					altura = int(alturaEntry.get())
-					outputList = ex.deeperSearchList(altura)
-					
-					outputMoves(outputList)
-
-				else:
-
-					output.insert(END,"Altura invalida!\n")
-
-					alturaEntry.delete(0)
+				height = checkHeight()
+				outputList = ex.deeperSearchList(height)
+				outputMoves(outputList)
+				
 			else:
-				alturaEntry.delete(0, END)
+				heightEntry.delete(0, END)
 				outputList = ex.breadthSearchList()
 				outputMoves(outputList)
 		else:
 
-				output.insert(END,"NOT Reachable\n")
+				output.insert(END,"Estado NAO Alcancavel\n")
 
 
 ##############################################################
@@ -89,16 +97,16 @@ root.title("Trabalho de FIA")
 ################ ENTRADAS ###########################
 labelInicial = Label(root, text="Estagio Inicial ")
 labelFinal = Label(root, text="Estagio Final ")
-labelAltura = Label(root, text="Altura Maxima ")
+labelHeight = Label(root, text="Altura Maxima ")
 inicialEntry = Entry(root)
 finalEntry = Entry(root)
-alturaEntry = Entry(root)
+heightEntry = Entry(root)
 labelInicial.grid(row=0, column=0, pady=5)
 inicialEntry.grid(row=0, column=1, pady=5, padx=7)
 labelFinal.grid(row=1, column=0, pady=5)
 finalEntry.grid(row=1, column=1, pady=5, padx=7)
-labelAltura.grid(row=3, column=0, pady=5)
-alturaEntry.grid(row=3, column=1, pady=5, padx=7)
+labelHeight.grid(row=3, column=0, pady=5)
+heightEntry.grid(row=3, column=1, pady=5, padx=7)
 
 ################ ALGORITMO ##########################
 v = IntVar()
